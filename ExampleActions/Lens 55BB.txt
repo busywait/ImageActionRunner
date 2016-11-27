@@ -1,0 +1,10 @@
+# A mirror lens from the 1980s, fixed aperture.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+-LensMake=Tamron
+-LensModel=Tamron SP 500mm f/8 Mirror 55BB
+-LensInfo=500 mm f/8
+-FNumber=8
+-MaxApertureValue=8
+-FocalLength=500 mm

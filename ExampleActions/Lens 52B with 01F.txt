@@ -1,0 +1,9 @@
+# Prime lens plus matching teleconverter. Teleconverter doubles focal length and reduces lens aperture by 2.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+-LensMake=Tamron
+-LensModel=Tamron SP 90mm f/2.5-32 52B with 2x Teleconverter 01F
+-LensInfo=180 mm f/5
+-MaxApertureValue=5
+-FocalLength=180 mm

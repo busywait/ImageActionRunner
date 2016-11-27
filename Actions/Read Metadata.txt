@@ -1,0 +1,2 @@
+# Options for reviewing metadata using exiftool
+-g1

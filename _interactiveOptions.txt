@@ -1,0 +1,20 @@
+# Options for exiftool to show progress and pause at the end of processing 
+# to allow review of output
+
+#Keep the console open after finishing
+-k
+# -k waits for Carriage Return press.
+# easier to let exiftool do this than put pause or set /p in calling batch files
+
+#Show progress messages in the console after each file
+-progress
+#Show progress in the window title
+-progress:
+#Don't keep backup files
+#-overwrite_original
+#Uncomment the line above if you are very confident of exiftool re-writing your source files
+
+#Ignore minor errors - downgrade error to a warning - could lose some
+#maker notes according to the docs. I needed this for an Olympus 
+#out-of-the-camera jpegs.
+#-m

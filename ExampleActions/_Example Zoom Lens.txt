@@ -1,0 +1,48 @@
+# An example Exif Action to write values for a zoom Lens
+
+# Save this file with a name like "Lens MyLens.txt"
+# and edit the values after the = signs. 
+
+# To avoid writing any tag either comment it out with a #
+# as the first character of the line or delete the line.
+
+# Lines starting with # are comments and can be deleted,
+# a descriptive first line comment is helpful.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+# 0xa433 Exif.Photo.LensMake
+-LensMake=Tamron
+
+# 0xa434 Exif.Photo.LensModel
+# Use the lens name from the LensFun database, or use
+# the same convention to uniquely identify the lens.
+# http://lensfun.sourceforge.net/lenslist/
+-LensModel=Tamron SP 70-300mm f/4-5.6 Di VC USD
+
+# 0xa432 Exif.Photo.LensSpecification
+# The min-max focal length, and the minimum F number at each end
+# of the focal length range
+-LensInfo=70-300 mm f/4-5.6
+
+# 0x9205 Exif.Image.MaxApertureValue
+# The smallest F number of the lens
+-MaxApertureValue=4
+
+# For a zoom lens the following values vary so add them as seperate 
+# actions. Focal Length is important for lens distortion correction.
+
+#0x920a Exif.Image.FocalLength
+#-FocalLength=200 mm
+#0x829d Exif.Image.FNumber
+#-FNumber=5.6
+
+# 0x9206 Exif.Image.SubjectDistance
+# The distance to the subject in metres
+#-SubjectDistance=10 m
+
+# A list of the available tags:
+# http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html
+
+# More detail for the meaning of the EXIF tags at 
+# http://www.exiv2.org/tags.html

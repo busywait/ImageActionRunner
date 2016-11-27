@@ -1,0 +1,9 @@
+# Samyang 7.5mm manual focus fisheye lens. f/5.6 allows fixed focus use.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+-LensMake=Samyang
+-LensModel=Samyang 7.5mm f/3.5 UMC Fish-eye MFT
+-LensInfo=7.5 mm f/3.5
+-MaxApertureValue=3.5
+-FocalLength=7.5 mm

@@ -1,0 +1,2 @@
+#C:\utils\exiftool-10.31\exiftool.exe 
+-FNumber=5.6

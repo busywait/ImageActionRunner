@@ -1,0 +1,7 @@
+# Options called when direct user input from the command prompt is passed to exiftool
+
+#... currently there are no options, but it keeps the .bat files consistent to 
+#    keep this file here. 
+
+# Force backups on? I can't see a way to force backups on after they have been turned off in interactiveOptions.txt
+

@@ -1,0 +1,9 @@
+# 1970s manual focus prime lens. Best around f/5.6-11, very hazy below f/5.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+-LensMake=Tamron
+-LensModel=Tamron 200mm f/3.5-22 CT-200 BBAR
+-LensInfo=200 mm f/3.5
+-MaxApertureValue=3.5
+-FocalLength=200 mm
