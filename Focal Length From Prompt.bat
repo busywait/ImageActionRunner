@@ -12,7 +12,7 @@ set "runner=_exiftoolPlusSidecar.bat"
 :: process every supported file. No need to look for sidecar files in this case.
 if EXIST "%~1\*" ( set "runner=_exiftool.bat" )
 
-call "%runner_dir%%runner%" "%runner_dir%_commandPrompInputOptions.txt" -%tag%=%value% %*
+call "%runner_dir%%runner%" "%runner_dir%_commandPrompInputOptions.txt" -%tag%="%value%" %*
 :: all done
 exit /b
 
