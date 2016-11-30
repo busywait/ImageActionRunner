@@ -5,20 +5,14 @@
 :: Put exif tag values in Actions\<action>.txt and pass that as the first 
 :: parameter before the list of files to be processed.
 
-:: Usage _exiftoolPlusSidecar.bat OptionsFilename ImageFilename [ImageFilename...]
+:: Contract: 
+:: - exiftool configuration can be absolute or relative to the script dir
+:: - input image files must be given an absolute path
+
+:: Usage _exiftool.bat ActionFilename (DIR|ImageFilename [ImageFilename...])
 @echo OFF
 
-set runner_dir=
-set working_dir=
-if 1==1 (
-	:: exiftool config file paths can be relative, file paths must be absolute
-	set "working_dir=%~dp0" 
-) else (
-	:: exiftool config paths must be absolute, file paths can be relative
-	set "runner_dir=%~dp0" 
-)
-:: Don't put more than one comment line in a bracketed expressions, eg above!
-
+set "working_dir=%~dp0" 
 pushd %working_dir%
 @echo ON
 exiftool.exe -execute -if "-e $filepath" -srcfile %%d%%f.xmp -@ "%runner_dir%_sidecarFormats.txt" -common_args -@ "%runner_dir%_interactiveOptions.txt" -@ %*

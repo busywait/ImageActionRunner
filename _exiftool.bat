@@ -5,26 +5,16 @@
 :: Usage _exiftool.bat exiftoolOptionsFile (ImageFilename [ImageFilename...]| DIR)
 
 :: Contract: 
-:: - exiftool configuration files are relative to the script dir
+:: - exiftool configuration can be absolute or relative to the script dir
 :: - input image files must be given an absolute path
 
-:: Usage _exiftool.bat OptionsFilename ImageFilename [ImageFilename...]
+:: Usage _exiftool.bat ActionFilename (DIR|ImageFilename [ImageFilename...])
 @echo OFF
 
-set runner_dir=
-set working_dir=
-if 1==1 (
-	:: exiftool config file paths can be relative, file paths must be absolute
-	set "working_dir=%~dp0" 
-) else (
-	:: exiftool config paths must be absolute, file paths can be relative
-	set "runner_dir=%~dp0" 
-)
-:: Don't put more than one comment line in a bracketed expressions, eg above!
-
+set "working_dir=%~dp0" 
 pushd %working_dir%
 echo ON
-exiftool.exe -@ "%runner_dir%_interactiveOptions.txt" -@ %*
+exiftool.exe -@ "_interactiveOptions.txt" -@ %*
 @echo OFF
 popd
 :: Rely on the -k exiftool option in _interactiveOptions.txt to keep the console open, 
