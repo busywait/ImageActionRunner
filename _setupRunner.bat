@@ -1,4 +1,4 @@
-:: Form an appropriate command line for the arguments passed.
+:: Form a command line based on the arguments passed and environment variables.
 
 @set missing_environment=
 @if [%runner_dir%]==[] ( set "mising_environment=runner_dir" )
