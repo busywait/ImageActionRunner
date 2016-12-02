@@ -7,4 +7,4 @@
 @set "runner_dir=%~dp0"
 :: Read metadata from the selected file, and any related sidecar .xmp file
 @call %runner_dir%_setupRunner.bat $*
-@call %runner% -@ "%runner_dir%Actions\Read Metadata.txt" %*
+call %runner% -@ "%runner_dir%Actions\Read Metadata.txt" %*
