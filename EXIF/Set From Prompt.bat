@@ -4,7 +4,7 @@
 	:: set statements don't work in an if block, so call them
 	call :setTagFromUserInput
 )
-:: Caution: clear state (tag and value) that have been set here to allow 
+:: Caution: clear the state (tag and value) that has been set here to allow 
 :: repeated calls from an interactive command prompt.
 
 @set /p value="Enter the %userPrompt%, or a blank line to do nothing and finish: "
