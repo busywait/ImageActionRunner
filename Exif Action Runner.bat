@@ -19,7 +19,7 @@
 @if "%action%"=="" goto:doNothing
 
 @call %runner_dir%_setupRunner.bat %*
-@call %runner% -@ "%runner_dir%Actions\%action%.txt" %*
+call %runner% -@ "%runner_dir%Actions\%action%.txt" %*
 @exit /b
 
 :showUsageAndFinish
