@@ -10,7 +10,7 @@
 @if [%sidecar_mode%]==[ignore] (
 	set runner="exiftool.exe" -@ "%runner_dir%_interactiveOptions.txt" 
 	) else ( 
-	set runner="exiftool.exe" -execute -if "-e $filepath" -srcfile "%%d%%f.xmp" -@ "%runner_dir%_sidecarFormats.txt" -common_args -@ "%runner_dir%_interactiveOptions.txt" )
+	set runner="exiftool.exe" -execute -if "-e $filepath" -srcfile "%%%%d%%%%f.xmp" -@ "%runner_dir%_sidecarFormats.txt" -common_args -@ "%runner_dir%_interactiveOptions.txt" )
 @call :clearState
 @exit /b
 
@@ -22,7 +22,7 @@
 	set "sidecar_mode=ignore"
 	) else ( 
 	set "sidecar_mode=look" )
-exit /b
+@exit /b
 	
 :clearState
 :: Allow running different scripts after each other in a command window
