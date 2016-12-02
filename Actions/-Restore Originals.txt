@@ -1,0 +1,3 @@
+#By default exiftool creates a backup of any image file before before writing metadata. This action restors the backup of the original and deletes the modified file (no recycle bin).
+#See the "_interactiveOptions.txt" file to turn off the backup creation for Exif Action Runner scripts.
+-restore_original
