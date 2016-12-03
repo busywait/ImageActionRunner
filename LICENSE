@@ -1,6 +1,9 @@
-exiftool.exe is (c) Phil Harvey and distributed under the following license:
+exiftool.exe is (c) Phil Harvey and re-distributed here under the following license:
 "This is free software; you can redistribute it and/or modify it under the same terms as Perl itself."
 http://www.sno.phy.queensu.ca/~phil/exiftool/#license
 http://dev.perl.org/licenses/
 
-The ImageActionRunner collection of scripts and configurations is distributed under the same conditions.
+This collection of scripts, ImageActionRunner, and the configurations included 
+with it are offered and distributed under the same conditions as Perl.
+"This is free software; you can redistribute it and/or modify it under the same terms as Perl itself."
+http://dev.perl.org/licenses/

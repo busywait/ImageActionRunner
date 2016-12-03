@@ -10,7 +10,8 @@ Download the latest version of ImageActionRunner as a zip from https://github.co
 
 Unzip the files to a suitable location, for example, c:\ImageActionRunner, or c:\utils\ImageActionRunner.
 
-Configure your favourite image organizer to call the scripts as an external editor. If you would like to use these scripts from the Windows File Explorer Send To menu then you can create shortcuts in %appdata%\Microsoft\Windows\Send To. The "Send To Exftool.bat" script can be used as the shortcut target if you want to run a specific action without any prompts, for example, "c:\ImageActionRunner\EXIF\Send To Exiftool.bat" "Actions\f8.txt" 
+Configure your favourite image organizer to call the scripts as an external editor. If you would like to use these scripts from the Windows File Explorer Send To menu then you can create shortcuts in %appdata%\Microsoft\Windows\Send To. The "Send To Exiftool.bat" script can be used as the shortcut target if you want to run a specific action without any prompts, for example, 
+    "c:\ImageActionRunner\EXIF\Send To Exiftool.bat" "Actions\f8.txt" 
 
 ### Example - ACDSee External Editor configuration
 Write me.
@@ -45,11 +46,22 @@ Write me.
 
 ## Actions
 
-Write me.
+Actions are formatted as exiftool configuration files:
+http://www.sno.phy.queensu.ca/~phil/exiftool/
+
+See the examples in the folder EXIF\Action Examples.
+
+Some actions that seem to be generally useful are already present in the Actions folder, and you will probably want to copy or modify these and the actions in the folder Action Examples. 
+
+Any .txt file that you put in to the folder Actions will be listed and can be run from the Exif Action Runner.bat script.
 
 ### -Delete Originals
 
+This action deletes any original file backup that exiftool might have made for the given files or all files in the given directories.
+
 ### -Restore Originals
+
+If there is an original file backup for the given file then this action deletes the current version of the file and restores the original file by renaming the backup.
 
 ## Wrapped actions
 Write me.
