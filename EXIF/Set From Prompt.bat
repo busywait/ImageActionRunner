@@ -12,23 +12,13 @@
 ::Let exiftool check that a valid value has been provided
 
 @set "runner_dir=%~dp0"
-@call %runner_dir%_setupRunner.bat %*
-
-call %runner% -%tag%="%value%" %*
-@call :unsetUserInput
+@set action_params=-%tag%="%value%"
+@call "%runner_dir%_callRunner.bat" %*
 @exit /b
 
 :setTagFromUserInput
 @	set /p tag="Enter the name of the tag to write:"
 @	set "userPrompt=value for tag %tag%"
-@exit /b
-
-:unsetUserInput
-	:: clean up temporary state from the environment for next time 
-	:: in case this is run from repeatedly by a user typing in to 
-	:: the same command prompt window
-@	set tag=
-@	set value=
 @exit /b
 
 :doNothing

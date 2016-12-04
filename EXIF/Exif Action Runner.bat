@@ -18,8 +18,9 @@
 
 @if "%action%"=="" goto:doNothing
 
-@call %runner_dir%_setupRunner.bat %*
-call %runner% -@ "%runner_dir%Actions\%action%.txt" %*
+:runAction
+@set action_params=-@ "%runner_dir%Actions\%action%.txt"
+@call "%runner_dir%_callRunner.bat" %*
 @exit /b
 
 :showUsageAndFinish
