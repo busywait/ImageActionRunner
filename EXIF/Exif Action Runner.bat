@@ -3,8 +3,12 @@
 @echo ON
 
 @if "%~1" == "" goto:showUsageAndFinish
-
 @set "runner_dir=%~dp0"
+
+:: Wrapper scripts can pass in command line arguments to run directly
+@if DEFINED action_params goto :runAction
+:: Wrapper scripts can pass in an action name
+@if DEFINED action goto :buildParamsAndRunAction
 
 :: List available actions
 @echo Available EXIF actions in %runner_dir%Actions:
@@ -16,10 +20,11 @@
 @echo. 
 @set /p action="Type a name from the list above and press Return, or press Return to do nothing and finish: "
 
-@if "%action%"=="" goto:doNothing
+@if NOT DEFINED action goto:doNothing
 
-:runAction
+:buildParamsAndRunAction
 @set action_params=-@ "%runner_dir%Actions\%action%.txt"
+:runAction
 @call "%runner_dir%_callRunner.bat" %*
 @exit /b
 
@@ -33,4 +38,5 @@
 @echo Nothing was done.
 :: drop through
 :finished
+@call %runner_dir%_clearRunState.bat
 @set /p a="Press RETURN to close this window."

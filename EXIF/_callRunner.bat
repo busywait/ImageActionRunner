@@ -1,20 +1,17 @@
-:: Form a command line based on the arguments passed and environment variables
+:: Form a command line based on the arguments environment variables, 
 :: run the command, and then clear down the state built during this run.
 
-@set missing_environment=
-@if [%runner_dir%]==[] ( set "mising_environment=runner_dir" )
-@if [%action_params%]==[] ( set "mising_environment=runner_dir" )
-@if NOT []==[%missing_environment%] goto :missingEnv
-
 :: Only set the sidecar_mode if the calling script did not pass it in
-@if []==[%sidecar_mode%] call :setSidecarMode $*
+@if NOT DEFINED sidecar_mode call :setSidecarMode $*
 
+:: The caller can force these scripts to never look for sidecar files,
+:: but by default we will update any existing sidecar when 
 @if [%sidecar_mode%]==[ignore] (
 	set runner=_exiftoolNoSidecarSearch.bat
 	) else ( 
 	set runner=_exiftoolLookForSidecars.bat
 )
-@call "%runner_dir%%runner%" %action_params% *
+call "%runner_dir%%runner%" %action_params% %*
 @call "%runner_dir%_clearRunState.bat"
 @exit /b
 
@@ -30,7 +27,3 @@
 	set "sidecar_mode=look" )
 ::! .bat files only allow one comment line per code block (above) is .bat files !
 @exit /b
-	
-:missingEnv
-@call "%runner_dir%_clearRunState.bat"
-@echo Missing environment variables: %missing_environment%
