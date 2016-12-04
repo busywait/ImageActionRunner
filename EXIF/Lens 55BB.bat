@@ -1,3 +1,3 @@
 @set "runner_dir=%~dp0"
-@call %runner_dir%_setupRunner.bat %*
-call %runner% -@ "%runner_dir%Actions\Lens 55BB.txt" %*
+@set action=Lens 55BB
+@call %runner_dir%Exif Action Runner.bat %*
