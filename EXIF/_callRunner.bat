@@ -5,7 +5,7 @@
 @if NOT DEFINED sidecar_mode call :setSidecarMode $*
 
 :: The caller can force these scripts to never look for sidecar files,
-:: but by default we will update any existing sidecar when 
+:: but by default we will update any existing sidecar when it exists 
 @if [%sidecar_mode%]==[ignore] (
 	set runner=_exiftoolNoSidecarSearch.bat
 	) else ( 

@@ -10,8 +10,8 @@ Download the latest version of ImageActionRunner as a zip from https://github.co
 
 Unzip the files to a suitable location, for example, c:\ImageActionRunner, or c:\utils\ImageActionRunner.
 
-Configure your favourite image organizer to call the scripts as an external editor. If you would like to use these scripts from the Windows File Explorer Send To menu then you can create shortcuts in %appdata%\Microsoft\Windows\Send To. The "Send To Exiftool.bat" script can be used as the shortcut target if you want to run a specific action without any prompts, for example, 
-    "c:\ImageActionRunner\EXIF\Send To Exiftool.bat" "Actions\f8.txt" 
+Configure your favourite image organizer to call the scripts as an external editor. If you would like to use these scripts from the Windows File Explorer Send To menu then you can create shortcuts in %appdata%\Microsoft\Windows\Send To. The "stet.bat" (send to exiftool) script can be used as the shortcut target if you want to run a specific action file without any prompts, for example, 
+    "c:\ImageActionRunner\EXIF\stet.bat" "Actions\f8.txt" 
 
 ### Example - ACDSee External Editor configuration
 Write me.
