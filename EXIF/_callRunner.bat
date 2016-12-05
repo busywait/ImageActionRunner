@@ -11,7 +11,7 @@
 	) else ( 
 	set runner=_exiftoolLookForSidecars.bat
 )
-call "%runner_dir%%runner%" %action_params% %*
+@call "%runner_dir%%runner%" %action_params% %*
 @call "%runner_dir%_clearRunState.bat"
 @exit /b
 

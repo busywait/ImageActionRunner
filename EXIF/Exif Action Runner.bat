@@ -5,8 +5,6 @@
 @if "%~1" == "" goto:showUsageAndFinish
 @set "runner_dir=%~dp0"
 
-:: Wrapper scripts can pass in command line arguments to run directly
-@if DEFINED action_params goto :runAction
 :: Wrapper scripts can pass in an action name
 @if DEFINED action goto :buildParamsAndRunAction
 
@@ -24,7 +22,6 @@
 
 :buildParamsAndRunAction
 @set action_params=-@ "%runner_dir%Actions\%action%.txt"
-:runAction
 @call "%runner_dir%_callRunner.bat" %*
 @exit /b
 

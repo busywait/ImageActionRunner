@@ -1,4 +1,5 @@
-:: This sets tags via exiftool command line options (stored in action_params), and without an Action .txt file
-@set action_params=-FNumber="8"
-@set %runner_dir%=%~dp0
-@call "%runner_dir%Exif Action Runner.bat" %*
+:: This sets a single value for a single tag (do not use quotes around the value or tag name)
+@set tag=FNumber
+@set value=8
+@set runner_dir=%~dp0
+@call "%runner_dir%Set From Prompt.bat" %*
