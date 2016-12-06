@@ -10,8 +10,7 @@ Download the latest version of ImageActionRunner as a zip from https://github.co
 
 Unzip the files to a suitable location, for example, c:\ImageActionRunner, or c:\utils\ImageActionRunner.
 
-Configure your favourite image organizer to call the scripts as an external editor. If you would like to use these scripts from the Windows File Explorer Send To menu then you can create shortcuts in %appdata%\Microsoft\Windows\Send To. The "stet.bat" (send to exiftool) script can be used as the shortcut target if you want to run a specific action file without any prompts, for example, 
-    "c:\ImageActionRunner\EXIF\stet.bat" "Actions\f8.txt" 
+Configure your favourite image organizer to call the scripts as an external editor. You can use these scripts from the Windows File Explorer Send To menu by creating shortcuts in %appdata%\Microsoft\Windows\Send To. 
 
 ### Example - ACDSee External Editor configuration
 Write me.
@@ -22,7 +21,7 @@ Write me.
 
 Usage: "Read Metadata.bat" (FILE [FILE...]|DIR)
 
-Read metadata from image file FILE, or all files in directory DIR. If the file is a raw format file and has a sidecar .xmp file then any additional or duplicate metadata is read from that too.
+Read metadata from image file FILE, or all files in directory DIR. If the file is a raw format file and has a sidecar .xmp file then any additional or duplicate metadata is read from that too and listed after the metadata from the base file.
 
 ### Run Exif Action.bat
 
@@ -54,20 +53,23 @@ Write 0 to indicate an unknown F-number.
 
 ## Actions
 
-EXIF Actions are formatted as exiftool configuration files. See available options and details about the configuration file format (-@ option) at the exiftool homepage:
-http://www.sno.phy.queensu.ca/~phil/exiftool/
+EXIF Actions are formatted as exiftool configuration files and contain tag name and values that you want to set together, or even other exiftool options that you would like to apply, for example reading metadata from a file. When you have defined an action then you can select one or more files in your image organizer and use the Exif Action Runner.bat application to chooes and apply the action.
 
-See the examples in the folder EXIF\Action Examples.
+See the EXIF Action examples in the folder EXIF\Action Examples for ideas to get you started, and see all available options and details about the configuration file format (the -@ option) at the exiftool homepage:
+http://www.sno.phy.queensu.ca/~phil/exiftool/.
 
 Some actions that seem to be generally useful are already present in the Actions folder. There are some examples of more specific actions in the Example Actions folder. You will probably want to copy and modify these examples to suit your own purposes.  
 
 Any .txt file that you put in to the folder Actions will be listed and can be run from the Exif Action Runner.bat script.
 
-###Creating actions for Lenses
+###Creating actions for lenses or cameras
 
-Exif Action Runner and saved actions is ideal for manually tagging images with details about the lens or camera used to take the picture. If you are going to create a large number of saved actions then it might be helpful to name the action files related to lenses with the prefix Lens, for example "Lens Tamrom 500mm.txt"
+Exif Action Runner and saved actions are ideal for manually tagging images with details about the lens or camera used to take the picture. If you are going to create a large number of saved actions then it might be helpful to name the action files related to lenses with the prefix "Lens", for example "Lens Tamrom 500mm.txt". Similarly, actions for Camera should be prefixed with "Cam".
 
-One helpful value to set is LensModel. To automatically apply lens correction profiles in software, and for consistency, you should use the exact string that is given for your lens in the LensFun database, or use the same naming convention.
+One helpful value to set is LensModel (valid for interchangable lenses, and for cameras with a fixed lens). By setting a consistent lens model value you will be able to search or navigate to images taken with that lens, and in some software you could automatically apply lens correction profiles for the lens. For consistency you should use the exact string that is given for your lens in the LensFun database:
+http://lensfun.sourceforge.net/lenslist/
+If your lens is not yet listed in the LensFun supported lens list try to use the same naming convention for "model":
+http://lensfun.sourceforge.net/manual/el_lens.html
 
 ### -Delete Originals
 
@@ -85,7 +87,14 @@ You can configure these wrapped actions to be called as external editors in your
 	
 ## Additional configuration
 
-In general avoid editing the .bat scripts that are part of ImageActionRunner. The file \_interactiveOptions.txt has the common exiftool options that are used for every action that is run. If you become confident in the metadata written then you might want to uncomment the line that deletes your original image files after metadata has been written to them.
+The file _interactiveOptions.txt has the exiftool options that are used for every action that is run. If you become confident in the metadata written then you might want to uncomment the line that deletes your original image files after metadata has been written to them. The -Delete Originals and -Restore Originals will stop working if you do this!
+
+If you find that you have files with minor errors then exiftool will refuse to write more metadata in to the file - you could choose to override this by uncommenting the relevant line in _interactiveOptions.txt. Typically minor errors are introduced into camera maker notes by editing or organizer software writing new metadata to a file - Adobe Elements Organizer 15 has done this to some of my files, and I was happy to loose the maker notes for these file when I forced exiftool to write to the images. There is a little more detail in the exiftool FAQ: 
+http://www.sno.phy.queensu.ca/~phil/exiftool/faq.html#Q15
+
+The _sidecarFormats.txt file lists all of the image formats that are assumed to have .xmp sidecar files. If you find that you have raw files with an extension that is not in the list (but is supported by exiftool) then you could add it.
+
+In general avoid editing the .bat scripts that are part of ImageActionRunner. When you are wrapping an action please note that scripts with names that start with _, for example "_callRunner.bat", are considered "internal", and more likely to change behaviour than the main application scripts. 
 
 ## Internal scripts
 
