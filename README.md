@@ -13,7 +13,9 @@ Unzip the files to a suitable location, for example, c:\ImageActionRunner, or c:
 Configure your favourite image organizer to call the scripts as an external editor. You can use these scripts from the Windows File Explorer Send To menu by creating shortcuts in %appdata%\Microsoft\Windows\Send To. 
 
 ### Example - ACDSee External Editor configuration
-Write me.
+
+You can integrate these scripts in to ACDSee menus and assign shortcut keys to run an action on selected files (in the Manage mode see Tools > External Editors > Configure Editors, and View > Toolbars > Customize). More detail for this configuration is given in the ACDSee documentation:
+http://files.acdsystems.com/english/support/acdseepro/4/help/Content/1Topics/7_Options_configuration/Customizing_configuring/IDDH_CONFIG_EDITORS.htm
 
 ## Application scripts
 
@@ -87,15 +89,13 @@ You can configure these wrapped actions to be called as external editors in your
 	
 ## Additional configuration
 
-The file _interactiveOptions.txt has the exiftool options that are used for every action that is run. If you become confident in the metadata written then you might want to uncomment the line that deletes your original image files after metadata has been written to them. The -Delete Originals and -Restore Originals will stop working if you do this!
+The file _interactiveOptions.txt has the exiftool options that are used for every action that is run. If you become confident with the ability of exiftool and Image Action Runner/Exif Action Runner scripts to write valid files then you might want to uncomment the line that deletes your original image files after metadata has been written to them. The -Delete Originals and -Restore Originals actions both act on the backup files, so will have no effect when backups have not been written!
 
 If you find that you have files with minor errors then exiftool will refuse to write more metadata in to the file - you could choose to override this by uncommenting the relevant line in _interactiveOptions.txt. Typically minor errors are introduced into camera maker notes by editing or organizer software writing new metadata to a file - Adobe Elements Organizer 15 has done this to some of my files, and I was happy to loose the maker notes for these file when I forced exiftool to write to the images. There is a little more detail in the exiftool FAQ: 
 http://www.sno.phy.queensu.ca/~phil/exiftool/faq.html#Q15
 
 The _sidecarFormats.txt file lists all of the image formats that are assumed to have .xmp sidecar files. If you find that you have raw files with an extension that is not in the list (but is supported by exiftool) then you could add it.
 
-In general avoid editing the .bat scripts that are part of ImageActionRunner. When you are wrapping an action please note that scripts with names that start with _, for example "_callRunner.bat", are considered "internal", and more likely to change behaviour than the main application scripts. 
-
 ## Internal scripts
 
-Write me.
+In general avoid editing the .bat scripts that are part of ImageActionRunner. When you are wrapping an action please note that scripts with names that start with _, for example "_callRunner.bat", are considered "internal", and more likely to change behaviour than the main application scripts. 
