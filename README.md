@@ -34,15 +34,23 @@ List all action configurations (.txt files) in the folder Actions and prompt for
 
 Usage: "Set From Prompt.bat" (FILE [FILE...]|DIR)
 
-Prompt for an exiftool tag name and a value for the tag. The value will be written to each FILE, or for each supported writable file in DIR. If the file is a raw format file and has a sidecar .xmp file then any additional or duplicate metadata is read from that too. 
+Prompt for an exiftool tag name and a value for the tag. The value will be written to each FILE, or for each supported writable file in DIR. If the file is a raw format file and has a sidecar .xmp file then the tag value is written to the sidecar .xmp too. 
 
 ### Focal Length From Prompt.bat
 
-Write me.
+Usage: "Focal Length From Prompt.bat" (FILE [FILE...]|DIR)
+
+Prompt a focal length value, eg 200, or 200 mm, but do not enter quote (") characters. The value will be written to each FILE, or for each supported writable file in DIR. If the file is a raw format file and has a sidecar .xmp file then the tag value is written to the sidecar .xmp too. 
+
+Write 0 to indicate an unknown focal length.
 
 ### F-Number From Prompt.bat
 
-Write me.
+Usage: "F-Number From Prompt.bat" (FILE [FILE...]|DIR)
+
+Prompt for an F-number, eg 5.6 or 8. The value will be written to each FILE, or for each supported writable file in DIR. If the file is a raw format file and has a sidecar .xmp file then the tag value is written to the sidecar .xmp too. 
+
+Write 0 to indicate an unknown F-number.
 
 ## Actions
 
@@ -51,9 +59,15 @@ http://www.sno.phy.queensu.ca/~phil/exiftool/
 
 See the examples in the folder EXIF\Action Examples.
 
-Some actions that seem to be generally useful are already present in the Actions folder, and you will probably want to copy or modify these and the actions in the folder Action Examples to suit your own purposes. 
+Some actions that seem to be generally useful are already present in the Actions folder. There are some examples of more specific actions in the Example Actions folder. You will probably want to copy and modify these examples to suit your own purposes.  
 
 Any .txt file that you put in to the folder Actions will be listed and can be run from the Exif Action Runner.bat script.
+
+###Creating actions for Lenses
+
+Exif Action Runner and saved actions is ideal for manually tagging images with details about the lens or camera used to take the picture. If you are going to create a large number of saved actions then it might be helpful to name the action files related to lenses with the prefix Lens, for example "Lens Tamrom 500mm.txt"
+
+One helpful value to set is LensModel. To automatically apply lens correction profiles in software, and for consistency, you should use the exact string that is given for your lens in the LensFun database, or use the same naming convention.
 
 ### -Delete Originals
 
