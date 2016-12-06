@@ -28,13 +28,13 @@ Read metadata from image file FILE, or all files in directory DIR. If the file i
 
 Usage: "Run Exif Action.bat" (FILE [FILE...]|DIR)
 
-List all action configurations (.txt files) in the folder Actions and prompt for an Action name. If a valid name is entered then the action will be run for each file FILE, or for each file in DIR. If the file is a raw format file and has a sidecar .xmp file then any additional or duplicate metadata is read from that too.
+List all action configurations (.txt files) in the folder Actions and prompt for an Action name to run. If a valid name is entered then the action will be run for each file FILE, or for each supported file in DIR. If the file is a raw format file and has a sidecar .xmp file then any additional or duplicate metadata is read from (or written to) the sidecar .xmp too.
 
 ### Set From Prompt.bat
 
 Usage: "Set From Prompt.bat" (FILE [FILE...]|DIR)
 
-Prompt for an exiftool tag name and a value for the tag. The value will be written to each FILE, or for each file in DIR. If the file is a raw format file and has a sidecar .xmp file then any additional or duplicate metadata is read from that too. 
+Prompt for an exiftool tag name and a value for the tag. The value will be written to each FILE, or for each supported writable file in DIR. If the file is a raw format file and has a sidecar .xmp file then any additional or duplicate metadata is read from that too. 
 
 ### Focal Length From Prompt.bat
 
