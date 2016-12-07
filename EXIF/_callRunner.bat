@@ -28,8 +28,9 @@
 	echo Also consider putting all of the files in the same directory and running your action 
 	echo on the directory using an action shortcut in the Windows File Explorer Send To menu. 
 	set /p response="Press return to continue, or enter q stop and choose a smaller set of files."
-	echo !%response%! is response
-	if "q"=="!response!" ( exit /b )
+	if "q"=="!response!" (
+		goto :cleanUpAndFinish
+	)
 	endlocal
 )	
 
@@ -44,6 +45,7 @@
 	set runner=_exiftoolLookForSidecars.bat
 )
 @call "%runner_dir%%runner%" %action_params% %*
+:cleanUpAndFinish
 @call "%runner_dir%_clearRunState.bat"
 @exit /b
 
