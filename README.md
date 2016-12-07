@@ -86,6 +86,12 @@ If there is an original file backup for the given file then this action deletes 
 A wrapped action script is a script that runs a specific action .txt file from the Actions folder, and so is easy to call from Windows Send To or an image organizer application. Examples are "Read Metadata.bat", "f8.txt", and "f11.bat" which each demonstrate different ways to package an action to use via an external image organizer or Windows File Explorer Send To menu option.
 	
 You can configure these wrapped actions to be called as external editors in your image organizer, or add them as a Windows Send To shortcut. Copy and modify the existing wrapped action to suit your own purpose.
+
+## Run actions on large sets of files
+
+Because of the way that other applications pass the list of files to these scripts there is a limit on the number of files that can be passed at one time. To get around this problem you can pass a directory name to the scripts and then all relevant files in the directory will be processed. You can pass a directory to the scripts by adding shortcuts to the scripts in the Windows Send To folder (described above). Then browse to the directory that you want to process and choose the script from the Send To context menu entry.
+	
+These scripts will show a warning and request permission to continue if it is likely that the list of files have been truncated.	
 	
 ## Additional configuration
 
