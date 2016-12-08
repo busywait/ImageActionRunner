@@ -1,0 +1,52 @@
+# An example Exif Action to write values for a 90mm lens used with a 2x tele-converter
+
+# Save this file with a name like "Lens MyLens.txt"
+# and edit the values after the = signs. 
+
+# To avoid writing any tag either comment it out with a #
+# as the first character of the line or delete the line.
+
+# Lines starting with # are comments and can be deleted,
+# a descriptive first line comment is helpful.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+# 0xa433 Exif.Photo.LensMake
+-LensMake=Tamron
+
+# 0xa434 Exif.Photo.LensModel
+# If you use a converter with your lens that affects the focal length
+# then indicate that in the LensModel string by using the word 
+# "extender" or "converter", as below.
+# Use the lens name from the LensFun database, or folow the same convention:
+# http://lensfun.sourceforge.net/lenslist/
+# LensFun will not try to use the focal length from LensModel string
+# if either the word "converter" or "extender" are present. 
+# http://lensfun.sourceforge.net/manual/el_lens.html
+-LensModel=Tamron SP 90mm f/2.5 52B with 2x converter 01F
+
+# 0xa432 Exif.Photo.LensSpecification
+# The actual focal length and aperture with the converter
+-LensInfo=180 mm f/5
+
+# 0x9205 Exif.Image.MaxApertureValue
+# The actual aperture with the converter
+-MaxApertureValue=5
+
+#0x920a Exif.Image.FocalLength
+# The actual focal length with the converter
+-FocalLength=180 mm
+
+# These will vary per image
+#0x829d Exif.Image.FNumber
+#-FNumber=8
+
+# 0x9206 Exif.Image.SubjectDistance
+# The distance to the subject in metres
+#-SubjectDistance=10 m
+
+# A list of the available tags:
+# http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html
+
+# More detail for the meaning of the EXIF tags at 
+# http://www.exiv2.org/tags.html
