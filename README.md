@@ -83,7 +83,7 @@ If there is an original file backup for the given file then this action deletes 
 
 ## Wrapped actions
 
-A wrapped action script is a script that runs a specific action .txt file from the Actions folder, and so is easy to call from Windows Send To or an image organizer application. Examples are "Read Metadata.bat", "f8.txt", and "f11.bat" which each demonstrate different ways to package an action to use via an external image organizer or Windows File Explorer Send To menu option.
+A wrapped action script is a script that runs a specific action .txt file from the Actions folder, and so is easy to call from Windows Send To or an image organizer application. Examples are "Read Metadata.bat", "f8.txt", and "f11-200mm.bat" which each demonstrate different ways to package an action to use via an external image organizer or Windows File Explorer Send To menu option.
 	
 You can configure these wrapped actions to be called as external editors in your image organizer, or add them as a Windows Send To shortcut. Copy and modify the existing wrapped action to suit your own purpose.
 
