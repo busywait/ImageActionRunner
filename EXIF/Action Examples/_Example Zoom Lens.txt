@@ -15,9 +15,10 @@
 -LensMake=Tamron
 
 # 0xa434 Exif.Photo.LensModel
-# Use the lens name from the LensFun database, or use
-# the same convention to uniquely identify the lens.
+# Use the lens name from the LensFun database:
 # http://lensfun.sourceforge.net/lenslist/
+# Or use the LensFun naming convention to uniquely identify the lens:
+# http://lensfun.sourceforge.net/manual/el_lens.html
 -LensModel=Tamron SP 70-300mm f/4-5.6 Di VC USD
 
 # 0xa432 Exif.Photo.LensSpecification
