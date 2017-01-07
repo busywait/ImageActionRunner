@@ -1,0 +1,8 @@
+# Copy the Created Date from the EXIF data to the IPTC data.
+# Note that the EXIF Create Date includes a time, the IPTC date does not when written by exiftool.
+-Iptc:DateCreated<$Exif:CreateDate
+
+# To go the other way use
+# exiftool "-Exif:CreateDate<$Iptc:DateCreated 00:00:00"
+# forcing the missing timestamp to be 00:00:00
+# http://u88.n24.queensu.ca/exiftool/forum/index.php?topic=3413.0
