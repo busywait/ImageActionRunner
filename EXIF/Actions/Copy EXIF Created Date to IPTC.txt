@@ -1,6 +1,8 @@
 # Copy the Created Date from the EXIF data to the IPTC data.
-# Note that the EXIF Create Date includes a time, the IPTC date does not when written by exiftool.
+# Note that the EXIF Create Date includes a time, the IPTC date 
+# and time are distinct fields.
 -Iptc:DateCreated<$Exif:CreateDate
+-Iptc:TimeCreated<$Exif:CreateDate
 
 # To go the other way use
 # exiftool "-Exif:CreateDate<$Iptc:DateCreated 00:00:00"
