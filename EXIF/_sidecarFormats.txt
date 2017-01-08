@@ -1,6 +1,6 @@
 # File extensions for which ACDSee creates XMP sidecar files when saving metadata
 
-# This list was converted from the list at  
+# This list was converted from the list at 
 # https://en.wikipedia.org/wiki/Raw_image_format
 # 2016/11/26
 
@@ -13,9 +13,9 @@ ari
 #(ARRIFLEX)
 
 -ext
-arw 
+arw
 -ext
-srf 
+srf
 -ext
 sr2
 #(Sony)
@@ -25,27 +25,27 @@ bay
 #(Casio)
 
 -ext
-crw 
+crw
 -ext
 cr2
 #(Canon)
 
 -ext
-cap 
+cap
 -ext
-iiq 
+iiq
 -ext
 eip
 #(Phase_One)
 
 -ext
-dcs 
+dcs
 -ext
-dcr 
+dcr
 -ext
-drf 
+drf
 -ext
-k25 
+k25
 -ext
 kdc
 #(Kodak)
@@ -80,7 +80,7 @@ mrw
 #(Minolta, Konica Minolta)
 
 -ext
-nef 
+nef
 -ext
 nrw
 #(Nikon)
@@ -90,7 +90,7 @@ orf
 #(Olympus)
 
 -ext
-pef 
+pef
 -ext
 ptx
 #(Pentax)
@@ -108,15 +108,15 @@ raf
 #(Fuji)
 
 -ext
-raw 
+raw
 -ext
 rw2
 #(Panasonic)
 
 -ext
-raw 
+raw
 -ext
-rwl 
+rwl
 -ext
 dng
 #(Leica)
