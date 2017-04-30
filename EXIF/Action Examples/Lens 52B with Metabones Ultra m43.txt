@@ -1,0 +1,10 @@
+# Nice 90mm 1980s prime lens with a Metabones 0.71x speed booster focal-length reducer. F-number increased by one stop.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+-LensMake=Tamron
+# Converter model Nikon G to m43, MB_SPNFG-m43-BM3 (Nikon F/G mount)
+-LensModel=90mm f/2.5 52B with 0.71x converter Metabones Speed Booster Ultra MB_SPNFG-m43-BM3
+-LensInfo=64mm mm f/1.8
+-MaxApertureValue=1.8
+-FocalLength=64 mm

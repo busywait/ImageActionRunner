@@ -1,0 +1,10 @@
+# 200mm cheap prime lens with a Metabones 0.71x speed booster focal-length reducer. F-number increased by one stop.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+-LensMake=Tamron
+# Converter model Nikon G to m43, MB_SPNFG-m43-BM3 (Nikon F/G mount)
+-LensModel=200mm f/3.5 CT-200 BBAR with 0.71x converter Metabones Speed Booster Ultra MB_SPNFG-m43-BM3
+-LensInfo=142 mm f/2.5
+-MaxApertureValue=2.5
+-FocalLength=142 mm
