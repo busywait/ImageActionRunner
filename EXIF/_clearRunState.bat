@@ -5,4 +5,6 @@
 @set action_params=
 @set tag=
 @set value=
+@set assignType=
+
 

@@ -14,9 +14,12 @@
 @if NOT DEFINED value goto :doNothing
 ::Let exiftool check that a valid value has been provided
 
+::assignType can be '+', '-', or '' (blank) for append, remove, or over-write.
+::assignType must be passed in if needed.
+
 :buildParamsAndRunAction
 @set "runner_dir=%~dp0"
-@set action_params=-%tag%="%value%"
+@set action_params=-%tag%%assignType%="%value%"
 @call "%runner_dir%_callRunner.bat" %*
 @exit /b
 
