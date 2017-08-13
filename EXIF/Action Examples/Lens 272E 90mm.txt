@@ -1,0 +1,10 @@
+# SLR AF macro/portrait lens. Di version is designed to avoid sensor reflections.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+-LensMake=Tamron
+# This is the exact string from the LensFun database - I would have included the model number 272E (or 272EN for my variation), but I'm keeping the string consisten with Lensfun here
+-LensModel=Tamron SP AF 90mm f/2.8 Di Macro 1:1
+-LensInfo=90 mm f/2.8
+-MaxApertureValue=2.8
+-FocalLength=90 mm

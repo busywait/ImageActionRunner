@@ -1,0 +1,10 @@
+# 24mm Tamron Adaptall 2 lens with a metabones 0.71x focal length reducer/speed booster.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+-LensMake=Tamron 
+# Barrel distortion and chromatic aberations are very prominent with this lens and mount combination
+-LensModel=Tamron 24mm f/2.5 01B with 0.71x converter Metabones Speed Booster Ultra MB_SPNFG-m43-BM3
+-LensInfo=17mm f/1.8
+-MaxApertureValue=1.8
+-FocalLength=17 mm

@@ -5,6 +5,6 @@
 -LensMake=Tamron
 -LensModel=Tamron SP 500mm f/8 Mirror 55BB with 2x converter 01F
 -LensInfo=500 mm f/8
--FNumber=8
--MaxApertureValue=8
--FocalLength=500 mm
+-FNumber=16
+-MaxApertureValue=16
+-FocalLength=1000 mm

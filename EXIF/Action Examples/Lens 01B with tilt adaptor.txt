@@ -1,0 +1,10 @@
+# Tamron Adaptall-2 manual lens for 35mm camera with a tilt mount for micro-four thirds.
+
+# Quotes are not stripped from these values. Avoid spaces at the end of lines.
+
+-LensMake=Tamron
+# PK to Micro-Four Thirds tilt adaptor mount
+-LensModel=Tamron 24mm f/2.5 01B with tilt adaptor
+-LensInfo=24mm mm f/2.5
+-MaxApertureValue=2.5
+-FocalLength=24 mm
