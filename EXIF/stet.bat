@@ -1,5 +1,10 @@
-:: A wrapper to run exiftool with some common options, and
-:: do not try to find .xmp sidecar files for raw files.
+:: stet = Send To ExifTool
+:: stet.bat is useful for Windows Send To shortcuts, or to call from the command line.
+
+:: This is a wrapper to run exiftool with some common options, but without searching 
+:: for .xmp sidecar files for raw file formats. The action .txt file is specified on 
+:: the command line to avoid having to create a .bat action wrapper. The purpose of 
+:: this file is to avoid exposing internal files for this!
 
 :: This script does not search for sidecar files because Windows File Explorer
 :: gives you the chance to select the .xmp files if you want to process them 
