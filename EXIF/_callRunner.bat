@@ -16,21 +16,30 @@
 :: number of files selected forms a command line over 8192(?) characters.
 
 :: If we have got this far then the script is running so we have not hit the 8192 
-:: character limit - we only need to warn that the command is at risk of having 
+:: character limit - we only need to warn if the command is at risk of having 
 :: been truncated
 @call :cmdlen cmdLength
 @echo %cmdcmdline%
 @echo Command Length: %cmdLength%
+@if %cmdLength% geq 4095 (
+	goto :no2047CharacterLimit
+)
 @if %cmdLength% geq 2000 (
 	setlocal EnableDelayedExpansion
 	echo WARNING: It looks like the list of files to process might have been truncated. 
 	echo Review the command above - you will need to process any remaining files seperately. 
 	echo Also consider putting all of the files in the same directory and running your action 
-	echo on the directory using an action shortcut in the Windows File Explorer Send To menu. 
-	set /p response="Press return to continue, or enter q stop and choose a smaller set of files."
+	echo on the directory, or using an action shortcut in the Windows File Explorer Send To 
+	echo which supports a longer file list and running actions on folders. 
+	set /p response="Press return to continue, enter q stop and choose a smaller set of files, or f to run the action on all files in folder %~dp1 : "
+
 	if "q"=="!response!" (
 		goto :cleanUpAndFinish
 	)
+	if "f"=="!response!" (
+		goto :processWholeFolderInsteadOfFileSelection
+	)
+:no2047CharacterLimit	
 	endlocal
 )	
 
@@ -45,8 +54,29 @@
 	set runner=_exiftoolLookForSidecars.bat
 )
 @call "%runner_dir%%runner%" %action_params% %*
+
 :cleanUpAndFinish
 @call "%runner_dir%_clearRunState.bat"
+@exit /b
+
+:: If the command line looks like it has been truncated, then maybe 
+:: it is appropriate to run the command on the whole folder?
+:: This is useful if all files are in the same folder already
+:: because ACDSee image manager does not allow external editors to be 
+:: run on a folder.
+:processWholeFolderInsteadOfFileSelection
+@	set runner=_exiftoolNoSidecarSearch.bat
+@if EXIST "%~1\*" (
+	echo "The first item in your list is a folder, %~1."
+	echo "Processing the parent folder of a list of folders is not supported."
+	goto :cleanupAndFinish
+	) else ( 
+	call "%runner_dir%%runner%" %action_params% "%~dp1."
+)
+:: Append . at the end of %~dp1. (above) because exiftool fails to process a folder path if it ends in \
+:: 
+:: .bat files only allow one comment line per code block (above) !
+@goto :cleanUpAndFinish
 @exit /b
 
 :setSidecarMode
