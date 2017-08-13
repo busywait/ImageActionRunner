@@ -1,5 +1,7 @@
 :: stet = Send To ExifTool
 :: stet.bat is useful for Windows Send To shortcuts, or to call from the command line.
+:: It exists as part of the public API so that users don't have to call any scripts
+:: with names starting with _ (the internal API of this set of scripts).
 
 :: This is a wrapper to run exiftool with some common options, but without searching 
 :: for .xmp sidecar files for raw file formats. The action .txt file is specified on 
