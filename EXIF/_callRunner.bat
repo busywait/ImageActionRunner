@@ -1,5 +1,8 @@
-:: Form a command line based on the arguments and environment variables, 
-:: run the command, and then clear down the state built during this run.
+:: Responsibilities of _callRunner.bat:
+:: 1/ Check the command line for problems <- this should be in Exif Action Runner?
+:: 2/ Ensure environment variables are set appropriately
+:: 3/ Call the runner, _exiftool.bat
+:: 4/ Clear down state after running
 
 :: CHECK THE COMMAND LINE
 
@@ -18,12 +21,16 @@
 :: If we have got this far then the script is running so we have not hit the 8192 
 :: character limit - we only need to warn if the command is at risk of having 
 :: been truncated
+
+:: ACDSee image organizer does not allow folders to be passed to this script, so it is 
+:: useful to allow the user to process the parent folder if the list of individual files 
+:: is too long. There is no check that all file selections are in the same folder, we 
+:: just use the parent of the first selection.
+
 @call :cmdlen cmdLength
 @echo %cmdcmdline%
 @echo Command Length: %cmdLength%
-@if %cmdLength% geq 4095 (
-	goto :no2047CharacterLimit
-)
+@set "run_choice=file_list"
 @if %cmdLength% geq 2000 (
 	setlocal EnableDelayedExpansion
 	echo WARNING: It looks like the list of files to process might have been truncated. 
@@ -34,50 +41,42 @@
 	set /p response="Press return to continue, enter q stop and choose a smaller set of files, or f to run the action on all files in folder %~dp1 : "
 
 	if "q"=="!response!" (
-		goto :cleanUpAndFinish
+		endlocal
+		goto :cleanupAndFinish
 	)
 	if "f"=="!response!" (
+		endlocal
 		goto :processWholeFolderInsteadOfFileSelection
 	)
-:no2047CharacterLimit	
 	endlocal
 )	
 
-:: Only set the sidecar_mode if the calling script did not pass it in
-@if NOT DEFINED sidecar_mode call :setSidecarMode $*
-
-:: The caller can force these scripts to never look for sidecar files,
-:: but by default we will update any existing sidecar when it exists 
-@if [%sidecar_mode%]==[ignore] (
-	set runner=_exiftoolNoSidecarSearch.bat
-	) else ( 
-	set runner=_exiftoolLookForSidecars.bat
+:: Do not override sidecar_mode if the calling script specified it
+@if NOT DEFINED sidecar_mode call :setSidecarMode %*
+@if [%run_choice%]==[file_list] (
+	call "%runner_dir%_exiftool.bat" %action_params% %*
+) else (
+	if [%run_choice%]==[parent_folder] (
+		call :processWholeFolderInsteadOfFileSelection
+	)
 )
-@call "%runner_dir%%runner%" %action_params% %*
 
 :cleanUpAndFinish
 @call "%runner_dir%_clearRunState.bat"
 @exit /b
 
-:: If the command line looks like it has been truncated, then maybe 
-:: it is appropriate to run the command on the whole folder?
-:: This is useful if all files are in the same folder already
-:: because ACDSee image manager does not allow external editors to be 
-:: run on a folder.
 :processWholeFolderInsteadOfFileSelection
-@	set runner=_exiftoolNoSidecarSearch.bat
 @if EXIST "%~1\*" (
 	echo "The first item in your list is a folder, %~1."
 	echo "Processing the parent folder of a list of folders is not supported."
-	goto :cleanupAndFinish
-	) else ( 
-	call "%runner_dir%%runner%" %action_params% "%~dp1."
+) else ( 
+	set "sidecar_mode=ignore"
+	call "%runner_dir%_exiftool.bat" %action_params% "%~dp1."
 )
 :: Append . at the end of %~dp1. (above) because exiftool fails to process a folder path if it ends in \
 :: 
 :: .bat files only allow one comment line per code block (above) !
-@goto :cleanUpAndFinish
-@exit /b
+goto :cleanUpAndFinish
 
 :setSidecarMode
 :: If we've been passed a directory instead of a file list then ask exiftool to

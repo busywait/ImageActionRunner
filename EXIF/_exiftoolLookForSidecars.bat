@@ -1,2 +1,0 @@
-:: runner_dir can be empty if the install folder is the working directory.
-call "%runner_dir%exiftool.exe" -execute -if "-e $filepath" -srcfile "%%%%d%%%%f.xmp" -@ "%runner_dir%_sidecarFormats.txt" -common_args -@ "%runner_dir%_interactiveOptions.txt" %*

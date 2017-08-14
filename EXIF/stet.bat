@@ -6,7 +6,8 @@
 :: This is a wrapper to run exiftool with some common options, but without searching 
 :: for .xmp sidecar files for raw file formats. The action .txt file is specified on 
 :: the command line to avoid having to create a .bat action wrapper. The purpose of 
-:: this file is to avoid exposing internal files for this!
+:: this file is to be a very thin wrapper to exiftool withouth colling internal files 
+:: for this!
 
 :: This script does not search for sidecar files because Windows File Explorer
 :: gives you the chance to select the .xmp files if you want to process them 
@@ -18,8 +19,9 @@
 :: paths must be absolute.
 @echo ON
 
-@set runner_dir=%~dp0
+@set "runner_dir=%~dp0"
+@set "sidecar_mode=ignore"
 @pushd %runner_dir%
-@call _exiftoolNoSidecarSearch.bat -@ %*
+@call _exiftool.bat -@ %*
 @popd
 :: Rely on the -k exiftool option in _interactiveOptions.txt to keep the console open

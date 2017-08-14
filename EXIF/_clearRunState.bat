@@ -6,5 +6,6 @@
 @set tag=
 @set value=
 @set assignType=
-
+@set outfile=
+@set out_redirect=
 
