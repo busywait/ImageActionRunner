@@ -8,7 +8,8 @@ Most of the scripts here are wrappers for exiftool: http://www.sno.phy.queensu.c
 The scripts integrate exiftool in to the graphical tools that you already use, they encapsulate the details of the exiftool usage for 
 particular tasks, and apply exiftool in a consistent and convenient way. Exiftool.exe is included in the download package and you don't need to download anthing else to use these scripts. 
 
-These scripts are for Windows computers (any version since Windows 95). Manual setup steps are required to configure these scripts before you can use them. 
+These scripts are for Windows computers (I assume 2000/XP/7/8/10, but I've only tested them on 10). Manual setup steps are required to configure these scripts 
+before you can use them. 
 
 ## Setup and use
 

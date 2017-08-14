@@ -1,5 +1,11 @@
 :: Batch file to use as a Send To shortcut in Windows File Explorer or 
 :: as an external editor in an image manager application.
+
+:: Responsibilities of Exif Action Runner.bat
+:: -/ Check command line for problems? Currently done in _call_runner.bat
+:: 1/ List appropriate Actions
+:: 2/ Allow user to select an action to run
+:: 3/ Hold UI open to see results
 @echo ON
 
 @if "%~1" == "" goto:showUsageAndFinish

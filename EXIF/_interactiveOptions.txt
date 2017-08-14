@@ -4,7 +4,7 @@
 #Keep the console open after finishing
 -k
 # -k waits for Carriage Return press.
-# easier to let exiftool do this than put pause or set /p in calling batch files
+# (It's easier to let exiftool do this than put pause or set /p in calling batch files)
 
 #Show progress messages in the console after each file
 -progress
