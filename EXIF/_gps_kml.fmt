@@ -1,0 +1,93 @@
+#------------------------------------------------------------------------------
+# File:         kml.fmt
+#
+# Description:  Example ExifTool print format file for generating a
+#               Google Earth KML file from a collection of geotagged images
+#
+# Usage:        exiftool -p kml.fmt -r DIR [...] > out.kml
+#
+# Requires:     ExifTool version 10.41 or later
+#
+# Revisions:    2010/02/05 - P. Harvey created
+#               2013/02/05 - PH Fixed camera icon to work with new Google Earth
+#               2017/02/02 - PH Organize into folders based on file directory
+#
+# Notes:     1) All input files must contain GPSLatitude and GPSLongitude.
+#            2) For Google Earth to be able to find the images, the input
+#               images must be specified using relative paths, and "out.kml"
+#               must stay in the same directory as where the command was run.
+#            3) Google Earth is picky about the case of the image file extension,
+#               and may not be able to display the image if an upper-case
+#               extension is used.
+#            4) The -fileOrder option may be used to control the order of the
+#               generated placemarks.
+#            5) Styles and StyleMap from 
+#               http://u88.n24.queensu.ca/exiftool/forum/index.php/topic,7836.0.html  
+#               replaces
+#    <Style id="Photo">
+#      <IconStyle>
+#        <Icon>
+#          <href>http://maps.google.com/mapfiles/kml/pal4/icon38.png</href>
+#          <scale>1.0</scale>
+#        </Icon>
+#      </IconStyle>
+#    </Style>
+#------------------------------------------------------------------------------
+#[HEAD]<?xml version="1.0" encoding="UTF-8"?>
+#[HEAD]<kml xmlns="http://earth.google.com/kml/2.0">
+#[HEAD]  <Document>
+#[HEAD]    <name>My Photos</name>
+#[HEAD]    <open>1</open>
+#[HEAD]    <Style id="Photo_normal">
+#[HEAD]      <IconStyle>
+#[HEAD]        <Icon>
+#[HEAD]          <href>PhotoPin.png</href>
+#[HEAD]          <scale>1.0</scale>
+#[HEAD]          <hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+#[HEAD]        </Icon>
+#[HEAD]      </IconStyle>
+#[HEAD]      <LabelStyle>
+#[HEAD]        <scale>0</scale>
+#[HEAD]      </LabelStyle>
+#[HEAD]    </Style>
+#[HEAD]    <Style id="Photo_highlighted">
+#[HEAD]      <IconStyle>
+#[HEAD]        <Icon>
+#[HEAD]          <href>PhotoPin.png</href>
+#[HEAD]          <scale>1.0</scale>
+#[HEAD]          <hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+#[HEAD]        </Icon>
+#[HEAD]      </IconStyle>
+#[HEAD]      <LabelStyle>
+#[HEAD]        <scale>0.75</scale>
+#[HEAD]      </LabelStyle>
+#[HEAD]    </Style>
+#[HEAD]    <StyleMap id="Photo">
+#[HEAD]      <Pair>
+#[HEAD]        <key>normal</key>
+#[HEAD]        <styleUrl>#Photo_normal</styleUrl>
+#[HEAD]      </Pair>
+#[HEAD]      <Pair>
+#[HEAD]        <key>highlight</key>
+#[HEAD]        <styleUrl>#Photo_highlighted</styleUrl>
+#[HEAD]      </Pair>
+#[HEAD]    </StyleMap>
+#[SECT]    <Folder>
+#[SECT]      <name>$directory</name>
+#[SECT]      <open>0</open>
+#[BODY]      <Placemark>
+#[BODY]        <description><![CDATA[<br/><table><tr><td>
+#[BODY]        <img src='$directory/$filename'
+#[BODY]          width='$imagewidth' height='$imageheight'>
+#[BODY]        </td></tr></table>]]></description>
+#[BODY]        <Snippet/>
+#[BODY]        <name>$filename</name>
+#[BODY]        <styleUrl>#Photo</styleUrl>
+#[BODY]        <Point>
+#[BODY]          <altitudeMode>clampedToGround</altitudeMode>
+#[BODY]          <coordinates>$gpslongitude#,$gpslatitude#,0</coordinates>
+#[BODY]        </Point>
+#[BODY]      </Placemark>
+#[ENDS]    </Folder>
+#[TAIL]  </Document>
+#[TAIL]</kml>

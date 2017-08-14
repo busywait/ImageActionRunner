@@ -1,0 +1,9 @@
+-if
+$gpslongitude ge 0
+-fileOrder
+DateTimeOriginal
+#Put -p on the command line because we need an absolute path to the file
+#-p
+#%runner_dir%_gps_gpx.fmt
+-d
+%Y-%m-%dT%H:%M:%SZ
