@@ -96,6 +96,7 @@ goto :cleanUpAndFinish
 ::! .bat files only allow one comment line per code block (above) !
 @exit /b
 
+
 :cmdlen <resultVar>
 @(
 @	setlocal EnableDelayedExpansion

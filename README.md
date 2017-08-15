@@ -86,7 +86,7 @@ See Time Subtract Offset from Prompt, above. Does the same but subtracts the off
 
 Usage: "GPS Create GPX Track from Tagged Photos.bat" (FILE [FILE...]|DIR)
 
-Export GPS location tags from all selected images to a single file called track.gpx which will be created in to the same folder as the first selected file, or to the first selected folder. The GPX format is a standard format for recording GPS trails, and can be used for adding locations to images with no location tags.
+Export GPS location tags from all selected images to a single file called track.gpx which will be created in the same folder as the first selected file, or in the selected folder. The GPX format is a standard format for recording GPS trails, and can be used for adding locations to images with no location tags.
 
 ### Export Raw EXIF to HTML.bat
 
