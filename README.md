@@ -40,12 +40,6 @@ Usage: "Run Exif Action.bat" (FILE [FILE...]|DIR)
 
 List all of the action configurations (.txt files) in the folder Actions and prompt for an Action name to run. If a valid name is entered then the action will be run for each file FILE, or for each supported file in DIR. If the file is a raw format file and has a sidecar .xmp file then any additional or duplicate metadata is read from (or written to) the sidecar .xmp too.
 
-### Set From Prompt.bat
-
-Usage: "Set From Prompt.bat" (FILE [FILE...]|DIR)
-
-Prompt for an exiftool tag name and a value for the tag. The value will be written to each FILE, or for each supported writable file in DIR. If the file is a raw format file and has a sidecar .xmp file then the tag value is written to the sidecar .xmp too. 
-
 ### Focal Length From Prompt.bat
 
 Usage: "Focal Length From Prompt.bat" (FILE [FILE...]|DIR)
@@ -62,14 +56,55 @@ Prompt for an F-number, eg 5.6 or 8. The value will be written to each FILE, or 
 
 Write 0 to indicate an unknown F-number.
 
-## Actions
+### Set From Prompt.bat
 
-EXIF Actions are formatted as exiftool configuration files and contain tag name and values that you want to set together, or even other exiftool options that you would like to apply, for example reading metadata from a file. When you have defined an action then you can select one or more files in your image organizer and use the Exif Action Runner.bat application to chooes and apply the action.
+Usage: "Set From Prompt.bat" (FILE [FILE...]|DIR)
 
-See the EXIF Action examples in the folder EXIF\Action Examples for ideas to get you started, and see all available options and details about the configuration file format (the -@ option) at the exiftool homepage:
+Prompt for an exiftool tag name and a value for the tag. The value will be written to each FILE, or for each supported writable file in DIR. If the file is a raw format file and has a sidecar .xmp file then the tag value is written to the sidecar .xmp too. 
+
+### Time Add Offset From Prompt.bat
+
+Usage: "Time Add Offset From Prompt.bat" (FILE [FILE...]|DIR)
+
+Prompt for an offset in the format YY:mm:dd HH:MM:SS. The years, months, days, hours, minutes and seconds will be added to the DateTimeOriginal, CreateDate and ModifyDate. The value will be updated in each FILE, or for each supported writable file in DIR. If the file is a raw format file and has a sidecar .xmp file then the updated value is written to the sidecar .xmp too. 
+
+If the HH:MM:SS part of the offset causes a time to cross midnight then the date will be updated to account for that. If a YY:mm:dd (date shift) part is supplied then the date is shifted before the time shift is applied.
+
+Example offsets:
+1 = 1 hour
+0:90 = 90 minutes
+0:0:120 = 120 seconds
+1:2:3 4:5:6 = 1 year, 2 months, 3 days, 4 hours, 5 minutes and 6 seconds
+
+(More detail about time shifts from the author of exiftool here: https://metacpan.org/pod/distribution/Image-ExifTool/lib/Image/ExifTool/Shift.pl) 
+
+### Time Subtract Offset From Prompt.bat
+
+See Time Subtract Offset from Prompt, above. Does the same but subtracts the offset.
+
+### GPS Create GPX Track from Tagged Photos.bat
+
+Usage: "GPS Create GPX Track from Tagged Photos.bat" (FILE [FILE...]|DIR)
+
+Export GPS location tags from all selected images to a single file called track.gpx which will be created in to the same folder as the first selected file, or to the first selected folder. The GPX format is a standard format for recording GPS trails, and can be used for adding locations to images with no location tags.
+
+### Export Raw EXIF to HTML.bat
+
+Usage: "Export Raw EXIF to HTML.bat" (FILE [FILE...]|DIR)
+
+Create an HTML file for each supported readable file in DIR that contains the binary EXIF data in hexadecimal with handy translation as you hover over the text.
+Sidecar formats are ignored. Images without location tags will be ignored.
+
+Files are named with the name of the original file with -exif.txt appended to the name.
+
+## Tag sets and actions to be selected an run from Exif Action Runner.bat
+
+EXIF tag sets can be defined in exiftool configuration filess which and contain tag name and values that you want to set together, or even other exiftool options that you would like to apply, for example reading metadata from a file. When you have defined a tag set then you can select one or more files in your image organizer and use the Exif Action Runner.bat application to chooes and apply the tag set.
+
+See the EXIF tag set examples in the folder EXIF\Action Examples for ideas to get you started, and see all available options and details about the configuration file format (the -@ option) at the exiftool homepage:
 http://www.sno.phy.queensu.ca/~phil/exiftool/.
 
-Some actions that seem to be generally useful are already present in the Actions folder. There are some examples of more specific actions in the Example Actions folder. You will probably want to copy and modify these examples to suit your own purposes.  
+Some exiftool options define actions that seem to be generally useful (other than writing tag values). Some actions like this are already present in the Actions folder. There are some examples of more specific actions in the Example Actions folder. You will probably want to copy and modify these examples to suit your own purposes.  
 
 Any .txt file that you put in to the folder Actions will be listed and can be run from the Exif Action Runner.bat script.
 
