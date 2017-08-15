@@ -8,7 +8,14 @@
 
 :: These scripts expect to receive all file and directory names to be processed
 :: on a command line because that makes it possible to integrate these scripts
-:: with image organizers and the Windows Send To menu. However, there are 
+:: with image organizers and the Windows Send To menu. 
+
+
+@call :cmdlen cmdLength
+@echo %cmdcmdline%
+@echo Command Length: %cmdLength%
+@set "run_choice=file_list"
+:: There are 
 :: limits on the length that a command line can be. Commands launched from 
 :: ACDSee Pro/Ultimate 10 are seen to truncate external editor commands at 
 :: around (but not exactly, and sometimes more than) 2047 characters. File names 
@@ -19,36 +26,34 @@
 :: number of files selected forms a command line over 8192(?) characters.
 
 :: If we have got this far then the script is running so we have not hit the 8192 
-:: character limit - we only need to warn if the command is at risk of having 
-:: been truncated
+:: character limit. If the command line length is over 3000 characters then it is 
+:: unlickely to be from ACDSee. Between 2000 and 3000 we warn that the command is 
+:: at risk of having been truncated
 
 :: ACDSee image organizer does not allow folders to be passed to this script, so it is 
 :: useful to allow the user to process the parent folder if the list of individual files 
 :: is too long. There is no check that all file selections are in the same folder, we 
 :: just use the parent of the first selection.
+@if %cmdLength% geq 2000 ( 
+	if %cmdLength% leq 3000 (
+		setlocal EnableDelayedExpansion
+		echo WARNING: It looks like the list of files to process might have been truncated. 
+		echo Review the command above - you will need to process any remaining files seperately. 
+		echo Also consider putting all of the files in the same directory and running your action 
+		echo on the directory, or using an action shortcut in the Windows File Explorer Send To 
+		echo which supports a longer file list and running actions on folders. 
+		set /p response="Press return to continue, enter q stop and choose a smaller set of files, or f to run the action on all files in folder %~dp1 : "
 
-@call :cmdlen cmdLength
-@echo %cmdcmdline%
-@echo Command Length: %cmdLength%
-@set "run_choice=file_list"
-@if %cmdLength% geq 2000 (
-	setlocal EnableDelayedExpansion
-	echo WARNING: It looks like the list of files to process might have been truncated. 
-	echo Review the command above - you will need to process any remaining files seperately. 
-	echo Also consider putting all of the files in the same directory and running your action 
-	echo on the directory, or using an action shortcut in the Windows File Explorer Send To 
-	echo which supports a longer file list and running actions on folders. 
-	set /p response="Press return to continue, enter q stop and choose a smaller set of files, or f to run the action on all files in folder %~dp1 : "
-
-	if "q"=="!response!" (
+		if "q"=="!response!" (
+			endlocal
+			goto :cleanupAndFinish
+		)
+		if "f"=="!response!" (
+			endlocal
+			goto :processWholeFolderInsteadOfFileSelection
+		)
 		endlocal
-		goto :cleanupAndFinish
 	)
-	if "f"=="!response!" (
-		endlocal
-		goto :processWholeFolderInsteadOfFileSelection
-	)
-	endlocal
 )	
 
 :: Do not override sidecar_mode if the calling script specified it
