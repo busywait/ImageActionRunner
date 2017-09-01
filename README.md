@@ -154,6 +154,9 @@ In general avoid editing the .bat scripts that are part of ImageActionRunner. Wh
 
 You can use these scripts from the Windows File Explorer Send To menu by creating shortcuts in %appdata%\Microsoft\Windows\Send To. Browse to the file "Run Exif Tool.bat" to select the Target for your Send To shortcut.
 
+Leave the "Start in" field in the shortcut properties blank (although it should not matter what value you put there, leaving it 
+blank might enable a carelessly written script to write any output files in your expected location).
+
 For specific actions you can select any of the other .bat files in EXIF that do not start with an _ character. Create your own wrapped action to call in this 
 way if needed. See the "Actions\f8.txt" or "Actions\Read Metadata.bat" files as examples, and don't forget to rename them before you start editing them!
 
