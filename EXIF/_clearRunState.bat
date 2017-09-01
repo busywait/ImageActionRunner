@@ -8,4 +8,5 @@
 @set assignType=
 @set outfile=
 @set out_redirect=
+@set gps_track_format=
 

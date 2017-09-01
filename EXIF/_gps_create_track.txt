@@ -1,3 +1,7 @@
+# Options for GPS track output - the format of the track file is determined by the 
+# format file specified on the command line (-p option)
+
+# No trailing space allowed!
 -if
 $gpslongitude ge 0
 -fileOrder
