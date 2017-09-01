@@ -1,0 +1,21 @@
+# Exporting in json format shows tag values in quotes, useful for seeing leading or trailing whitepsapce
+
+# Write output to a file in the same folder as the image
+-w
+%d%f-%e-exif.json
+
+# Export EXIF tag names and values in json (Javascript)
+-json
+
+#List all values including duplicates
+-a
+
+#List values for unknown tags
+-U
+
+#Prefix all tags with the Family 1 Group Name (these groups are "specific location")
+-G1
+
+# List the tag name (as used for writing) instead of the tag description.
+# Usually very similar, eg, LensModel instead of Lens Model
+-s

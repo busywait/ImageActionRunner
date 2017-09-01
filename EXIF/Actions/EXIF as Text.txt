@@ -1,0 +1,22 @@
+# Export tag name : value pairs in a text file format
+
+# Write output to a file in the same folder as the image
+-w
+%d%f-%e-exif.txt
+
+#The default output is text 
+
+#List all values including duplicates
+-a
+
+#List values for unknown tags
+-U
+
+#Prefix all tags with the Family 1 Group Name ("specific location")
+-G1
+# This version includes the Family 4 Group Name (the incidence count, useful for spotting duplicates)
+#-G1:4
+
+# List the tag name (as used for writing) instead of the tag description.
+# Usually very similar, eg, LensModel instead of Lens Model
+-s
