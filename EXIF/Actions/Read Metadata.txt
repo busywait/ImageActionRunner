@@ -1,2 +1,17 @@
 # Options for reviewing metadata using exiftool
--g1
+
+#List all values including duplicates
+-a
+# Uncomment the option below to include unknown tags
+#-U
+# Uncomment the option below to display tag names instead of more human readable tag descriptions
+#-s
+# Display (family 1, specific location) Group Names as headers, and display (family 4 groups, duplicate count) counts for duplicates
+-g1:4
+
+# The family numbers are different taxomnies/collections of groups in which to organize image tags:
+# Family 0 = general location, eg MakerNotes
+# Family 1 = specific location, eg Olympus, Panasonic
+# Family 2 = category, eg Camera
+# Family 3 = document number
+# Family 4 = duplicate count
