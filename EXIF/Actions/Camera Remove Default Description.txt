@@ -1,0 +1,52 @@
+# This action removes the default text added by my camera to the EXIF:Description.
+
+# Olympus cameras (for example E-PL7) write a default description in the 
+# EXIF:Description tag: "OLYMPUS DIGITAL CAMERA". That is useless to me and 
+# I cannot change it in the camera. If these images are uploaded or edited 
+# then these default descriptions get copied in to other fields and displayed, 
+# which I do not want. The same information is stored in other EXIF fields 
+# which I can read if needed.
+
+# Uncomment this line to show helpful information when this command is run
+#-v2
+
+#Ignore leading and trailing whitespace during comparisons by including 
+#this command line option
+#-api
+#Filter=s/^\s+|\s+($)//g
+#...doesn't work, or only works for comparisons using if?
+#-if 
+#$ImageDescription eq 'OLYMPUS DIGITAL CAMERA         '
+
+# There are 9 spaces at the end of this value that my camera writes:
+-ImageDescription-=OLYMPUS DIGITAL CAMERA         
+# Some software might have stripped the trailing spaces, so also look for a fixed
+# version with no trailing spaces:
+-ImageDescription-=OLYMPUS DIGITAL CAMERA
+
+# Uncomment this line and edit it as needed. Exiftool will write this string 
+# only if one of the previous removals was actioned:
+#-ImageDescription=Picture from my digital camera
+
+# If an image has been edited then the Description will likely have been  
+# copied to the XMP dc:Description element, so check that too.
+# ACDSee software will copy the trailing spaces to Description (raw develop)
+-Description-=OLYMPUS DIGITAL CAMERA         
+# Adobe software strips the trailing space
+-Description-=OLYMPUS DIGITAL CAMERA
+
+# Uncomment this line and edit it as needed. Exiftool will write this string 
+# only if one of the previous removals was actioned:    
+#-Description=Picture from my digital camera
+
+# Adobe software also copies Image Description to the IPTC Caption Abstract
+-Caption-Abstract-=OLYMPUS DIGITAL CAMERA
+ 
+# Uncomment this line and edit it as needed. Exiftool will write this string 
+# only if the previous removal was actioned:    
+#-Caption-Abstract=Picture from my digital camera
+
+#ACDSee 10 displays the XMP Description as Image Description in the "All EXIF" panel 
+#(and also shows the XMP Lens value in as the EXIF Lens Model) - use Exiftool
+#to see the actual EXIF values.
+
