@@ -1,0 +1,15 @@
+# Export all embedded preview images to a sub-folder called previews. Typically 
+# these will have no metadata associated, see the "Copy Tags from Raw.txt" 
+# action to add metadata from the original raw, or use the Export Best Jpeg.bat 
+# wrapped action to extract the best preview and add metadata the same time. 
+
+# Write a file for each preview that is extracted (upper-case W) to avoid 
+# multiple jpegs in the same file:
+-W
+# put all files in to a sub-folder called "previews"
+%dpreviews/%f_%e_%t%-c.%s
+
+# Binary extraction, don't just list the tag attributes  
+-b
+# Export *all* preview images, including tiny thumbnails and non-jpeg formats:
+-preview:All

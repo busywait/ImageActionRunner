@@ -1,0 +1,38 @@
+# Copy metadata from selected files to previously exported preview image files. 
+# Select the original raw files and run this action to copy across the tag 
+# values to images created using the "Export Embedded Images.txt" action.
+
+# Warning:
+
+# 0/ This will not overwrite any existing tag values (-writeMode cg is used). 
+# This action is intended for adding metadata to extracted previews.
+
+# 1/ Any new tags will be copied from any raw files in to any existing .xmp sidecar 
+# files if you are running this with automatic processing of sidecars. Sidecar
+# processing is the default unless a custom calling script has set 
+# "sidecar_mode=ignore". (Tags values will not be overwritten though).
+
+# 2/ If an image was extracted from a .xmp file then no metadata will be copied 
+# in to it if you are relying on automatic processing of raw file sidecars. 
+# Select the .xmp file directly.
+
+# 3/ If more than one version exists then only the first from the list of 
+# srcfile options below will have metadata copied in to it. 
+
+-srcfile
+%dpreviews/%f_%e_JpgFromRaw.jpg
+-srcfile
+%dpreviews/%f_%e_PreviewImage.jpg
+-srcfile
+%dpreviews/%f_%e_ThumbnailImage.jpg
+
+# Don't replace values of existing tags, only create missing tags
+-writeMode
+cg
+
+# -addTagsFromFile vs -tagsFromFile is irrelevant with -wm cg
+-tagsFromFile
+@
+#%d%f.%e is the same as @
+
+-overwrite_original

@@ -1,0 +1,62 @@
+# Export the best/most recent available JPEG preview image to the same folder as the 
+# raw files.
+
+# Order of preference for embedded images, in case more than one exists
+# 1/ JpgFromRaw (assumed to be a processed version of the RAW, so most recent)
+# 2/ PreviewImage (assumed to be the camera preview image)
+
+# This config attempts to extract each image in turn. exiftool will not overrwrite an
+# image file, so once an image is extracted subsequent extractions will do nothing.
+
+# 1/ JpgFromRaw
+-w
+# Put all files in the same folder as the source image. Existing images will not be 
+# overwritten but new metadata will be (re)written in to them later.
+%d%f_%e.jpg
+
+# Binary extraction (instead of just listing the binary tag attributes)  
+-b
+# Assume that JpgFromRaw is higher resolution or more recent than Preview Image
+-preview:JpgFromRaw
+
+# Run execute to copy the preview to a file now
+-execute
+
+# 2/ PreviewImage 
+-if
+not $JpgFromRaw
+-w
+# Put all files in the same folder as the source image. Existing images will not be 
+# overwritten but new metadata will be (re)written in to them later.
+%d%f_%e.jpg
+
+# Binary extraction (instead of just listing the binary tag attributes)  
+-b
+-preview:PreviewImage
+
+# Extracted previews don't contain metadata, so copy metadata from the source raw file.
+
+# Run execute to extract the files ...
+-execute
+
+# ... and then copy metadata from the source file to the exported previews
+
+# Note: EXIF data will be written in to the jpg image even if the image was
+# not created by this action, eg, it existed before this action was run. So,
+# don't overwrite any existing tag values.
+-writeMode
+cg
+
+-srcfile
+# %e %t, %c and %s are undefined at this point, so explicitely state the image type suffix, assuming no count
+%d%f_%e.jpg
+
+#-if
+#-e $filename
+
+-tagsfromfile
+@
+
+-overwrite_original
+
+
