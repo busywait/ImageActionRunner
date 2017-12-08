@@ -56,10 +56,12 @@
 	)
 )	
 
+:: %action_params% are currently formated as expected by exiftool command line
+
 :: Do not override sidecar_mode if the calling script specified it
 @if NOT DEFINED sidecar_mode call :setSidecarMode %*
 @if [%run_choice%]==[file_list] (
-	call "%runner_dir%_exiftool.bat" %action_params% %*
+	call "%runner_dir%_exiftool.bat" %*
 ) else (
 	if [%run_choice%]==[parent_folder] (
 		call :processWholeFolderInsteadOfFileSelection
@@ -76,7 +78,7 @@
 	echo "Processing the parent folder of a list of folders is not supported."
 ) else ( 
 	set "sidecar_mode=ignore"
-	call "%runner_dir%_exiftool.bat" %action_params% "%~dp1."
+	call "%runner_dir%_exiftool.bat" "%~dp1."
 )
 :: Append . at the end of %~dp1. (above) because exiftool fails to process a folder path if it ends in \
 :: 

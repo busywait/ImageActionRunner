@@ -26,6 +26,8 @@
 
 @if NOT DEFINED action goto:doNothing
 
+:: TODO: ask again if an action that does not exist is specified
+
 :buildParamsAndRunAction
 @set action_params=-@ "%runner_dir%Actions\%action%.txt"
 @call "%runner_dir%_callRunner.bat" %*
