@@ -1,6 +1,9 @@
 # Export the best/most recent available JPEG preview image to the same folder as the 
 # raw files.
 
+# Discussion related to this file:
+# http://u88.n24.queensu.ca/exiftool/forum/index.php?topic=8765.msg45086#msg45086
+
 # Order of preference for embedded images, in case more than one exists
 # 1/ JpgFromRaw (assumed to be a processed version of the RAW, so most recent)
 # 2/ PreviewImage (assumed to be the camera preview image)
@@ -41,18 +44,18 @@ not $JpgFromRaw
 
 # ... and then copy metadata from the source file to the exported previews
 
-# Note: EXIF data will be written in to the jpg image even if the image was
-# not created by this action, eg, it existed before this action was run. So,
-# don't overwrite any existing tag values.
+# Check that the file exists to avoid error output if no preview could be created
+-if
+-e $filename
+
+# Note: If the jpg was not actually written by this action (maybe it was created 
+# some time before) it might have it's own up to date metadata. So, don't 
+# overwrite any existing tag values.
 -writeMode
 cg
 
 -srcfile
-# %e %t, %c and %s are undefined at this point, so explicitely state the image type suffix, assuming no count
 %d%f_%e.jpg
-
-#-if
-#-e $filename
 
 # Get tags from the base raw file
 -tagsFromFile
