@@ -54,8 +54,12 @@ cg
 #-if
 #-e $filename
 
--tagsfromfile
+# Get tags from the base raw file
+-tagsFromFile
 @
+# ... then override with any newer values from the .xmp file if it exists
+-tagsFromFile
+%d%f.xmp
 
 -overwrite_original
 

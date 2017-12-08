@@ -30,9 +30,11 @@
 -writeMode
 cg
 
-# -addTagsFromFile vs -tagsFromFile is irrelevant with -wm cg
+# Get tags from the base raw file
 -tagsFromFile
 @
-#%d%f.%e is the same as @
+# ... then override with any newer values from the .xmp file if it exists
+-tagsFromFile
+%d%f.xmp
 
 -overwrite_original
