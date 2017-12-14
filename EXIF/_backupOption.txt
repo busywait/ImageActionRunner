@@ -1,0 +1,3 @@
+#Don't keep backup files
+-overwrite_original
+# Uncomment the line above if you are very confident of exiftool re-writing your source files

@@ -21,11 +21,18 @@
 	set opts=-execute -if "-e $filepath" -srcfile "%%%%d%%%%f.xmp" -@ "%runner_dir%_sidecarFormats.txt" -common_args %action_params% %extra_common_args%
 )
 
+:: Putting -v on this command line breaks the extracted preview file?!
+@if [%copy_mode%]==[copy] (
+    set opts=%opts% -@ "%runner_dir%_interactiveOptions.txt"
+) else (
+    set opts=%opts% -@ "%runner_dir%_interactiveOptions.txt" -@ "%runner_dir%_backupOption.txt"
+)
+
 @ IF DEFINED outfile (
     set "out_redirect=1>"%outfile%""
 )
 
 ::Ignore whitespace example for command options
 ::-api "Filter=s/\s+//g"
-call "%runner_dir%exiftool.exe" %opts% -@ "%runner_dir%_interactiveOptions.txt" %* %out_redirect%
+call "%runner_dir%exiftool.exe" %opts% %* %out_redirect%
 :: Options after -common_args will be added to the options within any -execute on this command line or config file.

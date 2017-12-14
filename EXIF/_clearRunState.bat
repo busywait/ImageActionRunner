@@ -3,6 +3,7 @@
 @set sidecar_mode=
 @set action=
 @set action_params=
+@set copy_mode=
 @set extra_common_args=
 @set tag=
 @set value=

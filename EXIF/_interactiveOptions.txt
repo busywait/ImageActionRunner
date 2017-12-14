@@ -10,9 +10,8 @@
 -progress
 #Show progress in the window title
 -progress:
-#Don't keep backup files
-#-overwrite_original
-#Uncomment the line above if you are very confident of exiftool re-writing your source files
+
+# overwrite_original is now set in the file backupOption.txt
 
 #Ignore minor errors - downgrade error to a warning - could lose some
 #maker notes according to the docs. I needed this for an Olympus 

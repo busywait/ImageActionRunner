@@ -5,12 +5,10 @@
 :: to the generated preview.
 
 @set "runner_dir=%~dp0"
-:: No output redirection needed
-::@set "outfile=%~dpn1-previews.txt"
 @set "sidecar_mode=ignore"
-:: TODO: instead of only excluding .jpg, only include raw files? -@ _sidecarFormats.txt
 @set "extra_common_args=--ext .jpg"
-:: TODO: also look for editor/developer/organizer preview images, eg in the hidden ACDSee [Developed] folder
+@set "copy_mode=copy"
+:: TODO: instead of only excluding .jpg, only include raw files? -@ _sidecarFormats.txt
 @set "action_params=-@ %runner_dir%_export_best_embedded_preview.txt"
 @call "%runner_dir%_callRunner.bat" %*
 @exit /b
