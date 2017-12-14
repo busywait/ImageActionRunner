@@ -3,7 +3,7 @@
 # Quotes are not stripped from these values. Avoid spaces at the end of lines.
 
 -LensMake=Tamron
--LensModel=Tamron SP 500mm f/8 Mirror 55BB with 2x converter 01F
+-LensModel=Tamron SP 500mm f/8 Mirror 55BB + 2x converter 01F
 -LensInfo=500 mm f/8
 -FNumber=16
 -MaxApertureValue=16

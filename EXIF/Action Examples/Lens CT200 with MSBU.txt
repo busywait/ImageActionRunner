@@ -4,7 +4,7 @@
 
 -LensMake=Tamron
 # Converter model Nikon G to m43, MB_SPNFG-m43-BM3 (Nikon F/G mount)
--LensModel=Tamron 200mm f/3.5 CT-200 BBAR with 0.71x converter Metabones Speed Booster Ultra MB_SPNFG-m43-BM3
+-LensModel=Tamron 200mm f/3.5 CT-200 BBAR + 0.71x converter Metabones Speed Booster Ultra MB_SPNFG-m43-BM3
 -LensInfo=142 mm f/2.5
 -MaxApertureValue=2.5
 -FocalLength=142 mm

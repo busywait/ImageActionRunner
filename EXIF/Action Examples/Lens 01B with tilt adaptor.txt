@@ -4,7 +4,7 @@
 
 -LensMake=Tamron
 # PK to Micro-Four Thirds tilt adaptor mount
--LensModel=Tamron 24mm f/2.5 01B with tilt adaptor
+-LensModel=Tamron 24mm f/2.5 01B + tilt adaptor
 -LensInfo=24mm mm f/2.5
 -MaxApertureValue=2.5
 -FocalLength=24 mm

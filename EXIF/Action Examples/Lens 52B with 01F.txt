@@ -3,7 +3,7 @@
 # Quotes are not stripped from these values. Avoid spaces at the end of lines.
 
 -LensMake=Tamron
--LensModel=Tamron SP 90mm f/2.5 52B with 2x converter 01F
+-LensModel=Tamron SP 90mm f/2.5 52B + 2x converter 01F
 -LensInfo=180 mm f/5
 -MaxApertureValue=5
 -FocalLength=180 mm

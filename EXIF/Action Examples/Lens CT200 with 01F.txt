@@ -4,7 +4,7 @@
 
 -LensMake=Tamron
 # Converter model Tamron 01F
--LensModel=Tamron 200mm f/3.5 CT-200 BBAR with 2x converter 01F
+-LensModel=Tamron 200mm f/3.5 CT-200 BBAR + 2x converter 01F
 -LensInfo=400 mm f/7
 -MaxApertureValue=7
 -FocalLength=400 mm
