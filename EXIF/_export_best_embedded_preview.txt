@@ -1,5 +1,5 @@
 # Export the best/most recent available JPEG preview image to the same folder as the 
-# raw files.
+# selected image files.
 
 # Discussion related to this file:
 # http://u88.n24.queensu.ca/exiftool/forum/index.php?topic=8765.msg45086#msg45086
@@ -14,7 +14,7 @@
 # 1/ JpgFromRaw
 -w
 # Put all files in the same folder as the source image. Existing images will not be 
-# overwritten but new metadata will be (re)written in to them later.
+# overwritten but any new tags will be (re)written in to them later.
 %d%f_%e.jpg
 
 # Binary extraction (instead of just listing the binary tag attributes)  
@@ -29,26 +29,24 @@
 -if
 not $JpgFromRaw
 -w
-# Put all files in the same folder as the source image. Existing images will not be 
-# overwritten but new metadata will be (re)written in to them later.
 %d%f_%e.jpg
 
-# Binary extraction (instead of just listing the binary tag attributes)  
 -b
 -preview:PreviewImage
 
-# Extracted previews don't contain metadata, so copy metadata from the source raw file.
+# Extracted previews don't contain metadata, so now copy in tag values from the 
+# source file.
 
 # Run execute to extract the files ...
 -execute
 
 # ... and then copy metadata from the source file to the exported previews
 
-# Check that the file exists to avoid error output if no preview could be created
+# Check that the file exists to avoid error output if no preview could be extracted
 -if
 -e $filename
 
-# Note: If the jpg was not actually written by this action (maybe it was created 
+# If the jpg was not actually written by this action (maybe it was created 
 # some time before) it might have it's own up to date metadata. So, don't 
 # overwrite any existing tag values.
 -writeMode
@@ -65,5 +63,3 @@ cg
 %d%f.xmp
 
 -overwrite_original
-
-
