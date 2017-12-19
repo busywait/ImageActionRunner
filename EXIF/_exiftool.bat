@@ -20,6 +20,10 @@
 	) else ( 
 	set opts=-execute -if "-e $filepath" -srcfile "%%%%d%%%%f.xmp" -@ "%runner_dir%_sidecarFormats.txt" -common_args %action_params% %extra_common_args%
 )
+:: ToDo - test -Lens<$LensModel copy!
+:: If ACDSee or Photoshop have created a .xmp then the exif LensModel will be in the aux:Lens element, so -Lens<$LensModel
+:: If ACDSee has saved any configuration for the Detail tab then LensModel will also be in a JavaScript string.
+:: What about .jpg files that have been saved by adobe or acdsee?
 
 :: Putting -v on this command line breaks the extracted preview file?!
 @if [%copy_mode%]==[copy] (

@@ -16,6 +16,10 @@
 
 # 1/ Try and copy ACDSee previews from the preview cache folder named [Developed]
 # Todo: check if source file exists to avoid warnings
+#-if
+#-e ${FileName}
+#-e [Developed]/${FileName}.jpg
+#-e [Developed]/${FileName;s/\.[^.]*$//}.${FileTypeExtenson}.jpg
 
 # No need to check if target file exists: exiftool will never overwrite an image
 
