@@ -1,3 +1,6 @@
 #Don't keep backup files
 -overwrite_original
 # Uncomment the line above if you are very confident of exiftool re-writing your source files
+# Preserve file modify timestamps (used by ACDSee by default to organize imported files)
+#-P
+# Uncomment the line above to preserve file time stamps
