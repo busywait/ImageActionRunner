@@ -2,10 +2,11 @@
 :: as an external editor in an image manager application.
 
 :: Responsibilities of Exif Action Runner.bat
-:: -/ Check command line for problems? Currently done in _call_runner.bat
+:: -/ Check command line for problems? Currently done in _callRunner.bat
 :: 1/ List appropriate Actions
 :: 2/ Allow user to select an action to run
 :: 3/ Hold UI open to see results
+:: 4/ Call either _clearRunstate or _callRunner.
 @echo ON
 
 @if "%~1" == "" goto:showUsageAndFinish
