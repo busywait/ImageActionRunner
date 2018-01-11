@@ -20,12 +20,30 @@
 :buildParamsAndRunAction
 @set "runner_dir=%~dp0"
 @set action_params=-%tag%%assignType%="%value%"
+
+@if DEFINED tag2 (
+	call :setTagAliasValue %tag2%
+)
+@if DEFINED tag3 (
+	call :setTagAliasValue %tag3%
+)
+@if DEFINED tag4 (
+	call :setTagAliasValue %tag4%
+)
+@if DEFINED tag5 (
+	call :setTagAliasValue %tag5%
+)
+
 @call "%runner_dir%_callRunner.bat" %*
 @exit /b
 
 :setTagFromUserInput
 @	set /p tag="Enter the name of the tag to write:"
 @	set "userPrompt=value for tag %tag%"
+@exit /b
+
+:setTagAliasValue <tagAlias>
+@set action_params=%action_params% -%1%assignType%="%value%"
 @exit /b
 
 :doNothing
